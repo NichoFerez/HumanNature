@@ -118,7 +118,7 @@
       '<div class="fold">' +
         '<span>' + text + '</span>' +
       '</div>' +
-      tags('h4', 'WE FOLD IT');
+      tags('h4', 'WHO');
 
     realshadow(document.getElementsByTagName('h3'), {type: 'text'});
     var $fold = document.getElementsByClassName('fold')[0];
