@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		canvas {
+  background: #ffffff;
+
+  position:relative;
+  z-index:0;
+
+}
+h1{
+
+  font-size:5rem;
+
+ font-family: "Archivo Black", sans-serif;
+}
+h2{ font-family: "Archivo Black", sans-serif;
+font-weight:bold;
+font-size:2rem;
+}
+.title{
+	display:flex;
+		z-index:1;
+position:absolute;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+margin-top:300px;
+margin-left:540px;
+}
+#questions{
+	display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+line-height:60px;
+	justify-content:center;
+}
+
+</style>
+
+
+</head>
+<body>
+	<div class="title">
+<h1>Human Nature</h1>
+</div>
+<canvas id="canvas">
+	
+</canvas>
+<div id="questions">
+
+	
+<h2>Who did you used to be, and why did you do away with them?</h2>
+<div class="question1">
+</div>
+
+<h2>How do you want people to see you and remember you?</h2>
+<div class="question2">
+</div>
+
+<h2>Do you feel like you recall memories at the worst times, or when you're least expecting it?</h2>
+<div class="question3">
+</div>
+
+<h2>Do you shut those bad memories down?</h2>
+<div class="question4">
+</div>
+
+<h2>Do you feel like you're burdened with the task of covering your tracks?</h2>
+<div class="question5">
+</div>
+
+<h2>Do you force yourself to stop talking to the people that were close to you during times you want to forget?</h2>
+<div class="question6">
+</div>
+
+<h2>If so, have you brought anyone with you? What is your relationship to them? Do they threaten your new identity?</h2>
+<div class="question7">
+</div>
+
+<h2>If I circled back with you in six months, would I be talking to the same person?</h2>
+<div class="question8">
+</div>
+
+</div>
+
+
+
+</body>
+<script>
+	var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+var stars = [], // Array that contains the stars
+    FPS = 60, // Frames per second
+    x = 100, // Number of stars
+    mouse = {
+      x: 0,
+      y: 0
+    };  // mouse location
+
+// Push stars to array
+
+for (var i = 0; i < x; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 1 + 1,
+    vx: Math.floor(Math.random() * 50) - 25,
+    vy: Math.floor(Math.random() * 50) - 25
+  });
+}
+
+// Draw the scene
+
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  
+  ctx.globalCompositeOperation = "lighter";
+  
+  for (var i = 0, x = stars.length; i < x; i++) {
+    var s = stars[i];
+  
+    ctx.fillStyle = "#9e9e9e";
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.fillStyle = 'black';
+    ctx.stroke();
+  }
+  
+  ctx.beginPath();
+  for (var i = 0, x = stars.length; i < x; i++) {
+    var starI = stars[i];
+    ctx.moveTo(starI.x,starI.y); 
+    if(distance(mouse, starI) < 150) ctx.lineTo(mouse.x, mouse.y);
+    for (var j = 0, x = stars.length; j < x; j++) {
+      var starII = stars[j];
+      if(distance(starI, starII) < 150) {
+        //ctx.globalAlpha = (1 / 150 * distance(starI, starII).toFixed(1));
+        ctx.lineTo(starII.x,starII.y); 
+      }
+    }
+  }
+  ctx.lineWidth = 0.05;
+  ctx.strokeStyle = 'black';
+  ctx.stroke();
+}
+
+function distance( point1, point2 ){
+  var xs = 0;
+  var ys = 0;
+ 
+  xs = point2.x - point1.x;
+  xs = xs * xs;
+ 
+  ys = point2.y - point1.y;
+  ys = ys * ys;
+ 
+  return Math.sqrt( xs + ys );
+}
+
+// Update star locations
+
+function update() {
+  for (var i = 0, x = stars.length; i < x; i++) {
+    var s = stars[i];
+  
+    s.x += s.vx / FPS;
+    s.y += s.vy / FPS;
+    
+    if (s.x < 0 || s.x > canvas.width) s.vx = -s.vx;
+    if (s.y < 0 || s.y > canvas.height) s.vy = -s.vy;
+  }
+}
+
+canvas.addEventListener('mousemove', function(e){
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+// Update and draw
+
+function tick() {
+  draw();
+  update();
+  requestAnimationFrame(tick);
+}
+
+tick();
+</script>
+</html>
