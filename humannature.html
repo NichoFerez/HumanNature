@@ -48,7 +48,7 @@ line-height:60px;
 iframe{
 	height:200px;
 	width:300px;
-
+border:none;
 box-shadow: 25px 25px 50px 0 white inset, -15px -15px 20px 0 white inset;
 
 }
@@ -232,21 +232,25 @@ box-shadow: 25px 25px 50px 0 white inset, -15px -15px 20px 0 white inset;
 
 </div>
 
+<script>
+  $(document).ready(function() {
+  $('iframe').each(function(el){
+    var _this = $(this);
+    _this.on('mouseover', function(ev) {
+ 
+      _this[0].src += "&autoplay=1";
+      ev.preventDefault();
+
+    });
+  });
+});
+</script>
 
 
 <script>
-	var shadow = document.getElementsByClassName("shadow");
+	var x = document.getElementsByClassName("shadow");
 
-realshadow(shadow, {
-  followMouse: true,   
-
-var: pageX = MouseEvent.pageX,            
-var: pageY = MouseEvent.pageY,          
-
-  color: '0,127,255',    
-
-  type: 'text' 
-});
+realshadow(x);
 
 realshadow.reset();
 </script>
