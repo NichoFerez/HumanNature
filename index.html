@@ -25,7 +25,7 @@ align-items:  center;
 font-weight:bolder;
 font-size:3.5rem;
 color:white;
-
+position:relative;
 padding-top:200px;
 padding-bottom:100px;
 width:80%;
@@ -42,8 +42,17 @@ position:absolute;
 
 canvas{
   width:100vw;
+
+ display:flex;
+ justify-content:center;
+
   position:relative;
-  z-index:2;
+
+margin-left:-10px;
+margin-top:-10px;
+background: rgb(219,224,235);
+background: linear-gradient(180deg, rgba(219,224,235,1) 0%, rgba(238,240,245,1) 47%, rgba(255,255,255,0) 100%);
+  z-index:0;
 
 }
 #questions{
@@ -153,7 +162,8 @@ iframe{
 
 <div class="shadow" >
 
-<span>Who did you used to be, and why did you do away with them?</span></div>
+<span>Who did you used to be, and why did you do away with them?</span>
+</div>
 <div class="question1">
 
 <iframe src="https://drive.google.com/file/d/1js0tuokWM1RJazX1-ddA07OX0SEtWSLL/preview" width="640" height="480"></iframe>
@@ -253,42 +263,17 @@ iframe{
 
   $('div.shadow').realshadow({
 
-  followMouse: true,   
+  followMouse: false,
+  angle: -20,   
             
 
-  color: '0,127,255',    // shadow color, rgb 0..255, default: '0,0,0'
+  color: '53,63,119',    // shadow color, rgb 0..255, default: '0,0,0'
 
   type:'text' // shadow type
 
 });
 
 
-var moveLight = (function () {
-    var cx, cy, r, hasMouseMoved;
-
-    return function () {
-      cx = window.innerWidth  >> 1;
-      cy = window.innerHeight >> 1;
-      r = Math.min(cx, cy);
-      hasMouseMoved = false;
-      document.body.addEventListener('mousemove', stop);
-      frame();
-    };
-
-    function frame() {
-      var a = new Date / 300;
-      realshadow.frame({
-        pageX: cx + r * Math.cos(a) | 0,
-        pageY: cy + r * Math.sin(a) | 0
-      });
-      !hasMouseMoved && setTimeout(frame, 16);
-    }
-
-    function stop() {
-      document.body.removeEventListener('mousemove', stop);
-      hasMouseMoved = true;
-    }
-  })();
 
 </script>
 
@@ -302,8 +287,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 var stars = [], // Array that contains the stars
-    FPS = 60, // Frames per second
-    x = 100, // Number of stars
+    FPS = 30, // Frames per second
+    x = 120, // Number of stars
     mouse = {
       x: 0,
       y: 0
@@ -331,11 +316,11 @@ function draw() {
   for (var i = 0, x = stars.length; i < x; i++) {
     var s = stars[i];
   
-    ctx.fillStyle = "#d9ddf7";
+    ctx.fillStyle = "white";
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
     ctx.fill();
-    ctx.fillStyle = '#d9ddf7';
+    ctx.fillStyle = 'white';
     ctx.stroke();
   }
   
@@ -353,7 +338,7 @@ function draw() {
     }
   }
   ctx.lineWidth = 0.05;
-  ctx.strokeStyle = 'black';
+  ctx.strokeStyle = '#17225e';
   ctx.stroke();
 }
 
