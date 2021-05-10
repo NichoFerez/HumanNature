@@ -10,8 +10,9 @@
 
 h1{
 width:100vw;
-  font-size:5rem;
-color:#000000;
+  font-size:8rem;
+color:#162749 ;
+opacity:70%;
 display:flex;
 font-weight:normal;
 margin-top:600px;
@@ -61,22 +62,26 @@ flex-direction:column;
 align-items:center;
 text-align:center;
 line-height:60px;
+padding-top:270px;
 	justify-content:center;
 }
 
 iframe{
 	height:200px;
 	width:300px;
-
+  padding-top:20px;
+  border:none;
 
 
 }
 
 
+
 .question1{
 	display:flex;
 	flex-direction:row;
-
+position:relative;
+margin-bottom:350px;
 	align-items:center;
 	justify-content:space-around;
 	flex-wrap:wrap;
@@ -87,6 +92,8 @@ iframe{
 	display:flex;
 	flex-direction:row;
 	align-items:center;
+  position:relative;
+  margin-bottom:350px;
 	justify-content:center;
 	justify-content:space-around;
 	flex-wrap:wrap;
@@ -97,6 +104,8 @@ iframe{
 	display:flex;
 	flex-direction:row;
 	align-items:center;
+  margin-bottom:350px;
+  position:relative;
 	justify-content:center;
 	justify-content:space-around;
 	flex-wrap:wrap;
@@ -107,6 +116,8 @@ iframe{
 	display:flex;
 	flex-direction:row;
 	align-items:center;
+  margin-bottom:350px;
+  position:relative;
 	justify-content:center;
 	justify-content:space-around;
 	flex-wrap:wrap;
@@ -117,6 +128,8 @@ iframe{
 	display:flex;
 	flex-direction:row;
 	align-items:center;
+  position:relative;
+  margin-bottom:350px;
 	justify-content:center;
 	justify-content:space-around;
 	flex-wrap:wrap;
@@ -127,6 +140,8 @@ iframe{
 	display:flex;
 	flex-direction:row;
 	align-items:center;
+  margin-bottom:350px;
+  position:relative;
 	justify-content:center;
 	justify-content:space-around;
 	flex-wrap:wrap;
@@ -137,6 +152,8 @@ iframe{
 	display:flex;
 	flex-direction:row;
 	align-items:center;
+  margin-bottom:350px;
+  position:relative;
 	justify-content:center;
 	justify-content:space-around;
 	flex-wrap:wrap;
@@ -176,7 +193,11 @@ iframe{
 
 </div>
 
-<div class="shadow">How do you want people to see you and remember you?</div>
+<div class="shadow">
+  <span>
+How do you want people to see you and remember you?
+</span>
+</div>
 <div class="question2">
 
 	<iframe src="https://drive.google.com/file/d/1lgqtCr_W1Pceex2fdi_GHwyut-0KagY3/preview" width="640" height="480"></iframe>
@@ -190,7 +211,11 @@ iframe{
 
 </div>
 
-<div class="shadow" >Do you feel like you recall memories at the worst times, or when you're least expecting it?</div>
+<div class="shadow" >
+<span>
+Do you feel like you recall memories at the worst times, or when you're least expecting it?
+<span>
+</div>
 <div class="question3">
 	<iframe src="https://drive.google.com/file/d/16HiIEvgD36s78ImGeMjU9h99uc0v_Zct/preview" width="640" height="480"></iframe>
 
@@ -214,7 +239,11 @@ iframe{
 
 </div>
 
-<div class="shadow">Do you feel like you're burdened with the task of covering your tracks?</div>
+<div class="shadow">
+<span>
+Do you feel like you're burdened with the task of covering your tracks?
+<span>
+</div>
 <div class="question5">
 	<iframe src="https://drive.google.com/file/d/1UIGUnaJ9TGlzPGmMYTtHC0AbY6E8f1Lz/preview" width="640" height="480"></iframe>
 
@@ -227,7 +256,9 @@ iframe{
 
 </div>
 
-<div class="shadow" >Do you force yourself to stop talking to the people that were close to you during times you want to forget?</div>
+<div class="shadow" ><span>
+Do you force yourself to stop talking to the people that were close to you during times you want to forget?
+</span></div>
 <div class="question6">
 <iframe src="https://drive.google.com/file/d/1OM5h9-CwYnQV22kTWlen0bkEHzM8GL41/preview" width="640" height="480"></iframe>
 
@@ -267,12 +298,21 @@ iframe{
   angle: -20,   
             
 
-  color: '53,63,119',    // shadow color, rgb 0..255, default: '0,0,0'
+  color: '23,10,0',    // shadow color, rgb 0..255, default: '0,0,0'
 
   type:'text' // shadow type
 
 });
+  $('h1').realshadow({
 
+  followMouse: false,
+   
+
+  color: '218,224,237',    // shadow color, rgb 0..255, default: '0,0,0'
+
+  type:'text' // shadow type
+
+});
 
 
 </script>
@@ -287,8 +327,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 var stars = [], // Array that contains the stars
-    FPS = 30, // Frames per second
-    x = 120, // Number of stars
+    FPS = 60, // Frames per second
+    x = 160, // Number of stars
     mouse = {
       x: 0,
       y: 0
@@ -337,7 +377,7 @@ function draw() {
       }
     }
   }
-  ctx.lineWidth = 0.05;
+  ctx.lineWidth = 0.09;
   ctx.strokeStyle = '#17225e';
   ctx.stroke();
 }
